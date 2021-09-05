@@ -2,4 +2,19 @@
 
 import Foundation
 
-enum DeepLink { }
+typealias DeepLink = [DeepLinkComponent]
+
+enum DeepLinkComponent {
+  // Auth
+  case signup
+  
+  // Home
+  case home
+  case push
+  case pushFlow
+  case pushFlowDetail
+  
+  // More
+  case more
+  case about
+}

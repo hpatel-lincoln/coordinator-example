@@ -7,7 +7,7 @@ class AuthCoordinator: NavigationCoordinator {
   private(set) var coordinator: Coordinator?
   private(set) var router: Router
   
-  var finishFlow: (() -> Void)?
+  var didCompleteFlow: (() -> Void)?
   
   init(router: Router) {
     self.hasStarted = false
@@ -30,12 +30,24 @@ class AuthCoordinator: NavigationCoordinator {
   }
   
   private func handleDeepLink(_ link: DeepLink) {
-    
+    var deepLink = link
+    if deepLink.count > 0 {
+      let next = deepLink.removeFirst()
+      switch next {
+      case .signup:
+        showSignup()
+      default:
+        break
+      }
+    }
   }
   
   private func showLogin() {
-    let loginController = UIViewController()
-    loginController.view.backgroundColor = .red
+    let loginController: LoginViewController = .instantiate(from: .auth)
+    loginController.didCompleteLogin = didCompleteFlow
+    loginController.didTapSignup = { [unowned self] in
+      self.showSignup()
+    }
     router.setRootModule(loginController)
   }
   

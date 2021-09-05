@@ -32,7 +32,7 @@ class AppCoordinator: NavigationCoordinator {
   
   private func startAuthFlow(with link: DeepLink?) {
     let authCoordinator = AuthCoordinator(router: router)
-    authCoordinator.finishFlow = { [unowned self] in
+    authCoordinator.didCompleteFlow = { [unowned self] in
       self.coordinator = nil
       self.isAuthorized = true
       self.start(with: link)
