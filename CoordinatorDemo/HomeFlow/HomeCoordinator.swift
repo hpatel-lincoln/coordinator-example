@@ -44,8 +44,7 @@ class HomeCoordinator: NavigationCoordinator {
   }
   
   private func showHome() {
-    let controller = UIViewController()
-    controller.view.backgroundColor = .red
-    router.setRootModule(controller)
+    let homeController: HomeViewController = .instantiate(from: .home)
+    router.setRootModule(homeController)
   }
 }
