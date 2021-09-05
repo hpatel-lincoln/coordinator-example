@@ -48,6 +48,34 @@
             </objects>
             <point key="canvasLocation" x="35" y="94"/>
         </scene>
+        <!--Signup View Controller-->
+        <scene sceneID="ZH7-pq-cfR">
+            <objects>
+                <viewController storyboardIdentifier="SignupViewController" id="BVD-SK-vrH" customClass="SignupViewController" customModule="CoordinatorDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cl6-kh-WPh">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZGi-W6-zBg">
+                                <rect key="frame" x="136" y="269" width="48" height="30"/>
+                                <state key="normal" title="Signup"/>
+                                <connections>
+                                    <action selector="onSignupTap" destination="BVD-SK-vrH" eventType="touchUpInside" id="4CU-TU-exB"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="eF8-Bo-7eE"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ZGi-W6-zBg" firstAttribute="centerX" secondItem="cl6-kh-WPh" secondAttribute="centerX" id="K4h-mE-iyS"/>
+                            <constraint firstItem="ZGi-W6-zBg" firstAttribute="centerY" secondItem="cl6-kh-WPh" secondAttribute="centerY" id="owJ-o3-H33"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="C6K-eI-jh3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="958" y="93"/>
+        </scene>
     </scenes>
     <resources>
         <systemColor name="systemBackgroundColor">

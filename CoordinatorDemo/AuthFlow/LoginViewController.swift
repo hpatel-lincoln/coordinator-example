@@ -9,7 +9,8 @@ class LoginViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    view.backgroundColor = .red
+    navigationItem.title = "Login"
+    navigationController?.navigationBar.prefersLargeTitles = true
   }
   
   @IBAction func onLoginTap() {

@@ -52,8 +52,8 @@ class AuthCoordinator: NavigationCoordinator {
   }
   
   private func showSignup() {
-    let signupController = UIViewController()
-    signupController.view.backgroundColor = .green
+    let signupController: SignupViewController = .instantiate(from: .auth)
+    signupController.didCompleteSignup = didCompleteFlow
     router.push(signupController)
   }
 }
