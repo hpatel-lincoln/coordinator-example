@@ -55,8 +55,8 @@ class MainCoordinator: TabBarCoordinator {
       let homeCoordinator = HomeCoordinator(router: router)
       coordinators[0] = homeCoordinator
     case 1:
-      let homeCoordinator = HomeCoordinator(router: router)
-      coordinators[1] = homeCoordinator
+      let moreCoordinator = MoreCoordinator(router: router)
+      coordinators[1] = moreCoordinator
     default:
       break
     }
