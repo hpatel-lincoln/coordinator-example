@@ -1,13 +1,12 @@
 // Created by Hardik Patel on 9/4/21.
 
-import Foundation
+import UIKit
 
-class AuthCoordinator: NavigationCoordinator {
+class HomeCoordinator: NavigationCoordinator {
+  
   private(set) var hasStarted: Bool
   private(set) var coordinator: Coordinator?
   private(set) var router: Router
-  
-  var didCompleteFlow: (() -> Void)?
   
   init(router: Router) {
     self.hasStarted = false
@@ -21,7 +20,7 @@ class AuthCoordinator: NavigationCoordinator {
       router.popToRootModule(animated: false)
       coordinator = nil
     } else {
-      showLogin()
+      showHome()
     }
     
     if let deepLink = link {
@@ -34,26 +33,19 @@ class AuthCoordinator: NavigationCoordinator {
     if deepLink.count > 0 {
       let next = deepLink.removeFirst()
       switch next {
-      case .signup:
-        showSignup()
+      case .push:
+        print("push a controller")
+      case .pushFlow:
+        print("start a push flow")
       default:
         break
       }
     }
   }
   
-  private func showLogin() {
-    let loginController: LoginViewController = .instantiate(from: .auth)
-    loginController.didCompleteLogin = didCompleteFlow
-    loginController.didTapSignup = { [unowned self] in
-      self.showSignup()
-    }
-    router.setRootModule(loginController)
-  }
-  
-  private func showSignup() {
-    let signupController: SignupViewController = .instantiate(from: .auth)
-    signupController.didCompleteSignup = didCompleteFlow
-    router.push(signupController)
+  private func showHome() {
+    let controller = UIViewController()
+    controller.view.backgroundColor = .red
+    router.setRootModule(controller)
   }
 }

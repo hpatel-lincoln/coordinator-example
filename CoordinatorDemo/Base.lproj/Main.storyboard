@@ -24,7 +24,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="Mi7-Np-J3m">
             <objects>
-                <tabBarController id="Od4-3x-mWS" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarController" id="Od4-3x-mWS" customClass="TabBarController" customModule="CoordinatorDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="VVR-t7-pce">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
