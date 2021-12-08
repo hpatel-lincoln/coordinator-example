@@ -34,7 +34,7 @@ class MoreCoordinator: NavigationCoordinator {
       let next = deepLink.removeFirst()
       switch next {
       case .about:
-        print("push a controller")
+        showAbout()
       default:
         break
       }
@@ -43,6 +43,14 @@ class MoreCoordinator: NavigationCoordinator {
   
   private func showMore() {
     let moreController: MoreViewController = .instantiate(from: .more)
+    moreController.didTapAbout = { [unowned self] in
+      self.showAbout()
+    }
     router.setRootModule(moreController)
+  }
+  
+  private func showAbout() {
+    let aboutController: AboutViewController = .instantiate(from: .more)
+    router.push(aboutController)
   }
 }
