@@ -71,9 +71,9 @@ class MainCoordinator: TabBarCoordinator {
       let next = deepLink.removeFirst()
       switch next {
       case .home:
-        selectIndex(0, with: link)
+        selectIndex(0, with: deepLink)
       case .more:
-        selectIndex(1, with: link)
+        selectIndex(1, with: deepLink)
       default:
         break
       }
