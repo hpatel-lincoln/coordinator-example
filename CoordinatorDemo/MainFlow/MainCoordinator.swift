@@ -7,6 +7,8 @@ class MainCoordinator: TabBarCoordinator {
   private(set) var coordinators: [Int : Coordinator]
   private(set) var tabBarController: TabBarController
   
+  var didCompleteFlow: (() -> Void)?
+  
   init(tabBarController: TabBarController) {
     self.coordinators = [:]
     self.tabBarController = tabBarController
@@ -56,6 +58,7 @@ class MainCoordinator: TabBarCoordinator {
       coordinators[0] = homeCoordinator
     case 1:
       let moreCoordinator = MoreCoordinator(router: router)
+      moreCoordinator.didCompleteFlow = didCompleteFlow
       coordinators[1] = moreCoordinator
     default:
       break

@@ -29,7 +29,11 @@ class AppCoordinator: NavigationCoordinator {
   private func startMainFlow(with link: DeepLink?) {
     let mainController: TabBarController = .instantiate(from: .main)
     let mainCoordinator = MainCoordinator(tabBarController: mainController)
-    // TODO: set didCompleteFlow for mainCoordinator which should be called on logout
+    mainCoordinator.didCompleteFlow = { [unowned self] in
+      self.coordinator = nil
+      self.isAuthorized = false
+      self.start()
+    }
     self.coordinator = mainCoordinator
     router.setRootModule(mainController, hideBar: true)
     self.coordinator?.start(with: link)

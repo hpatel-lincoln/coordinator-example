@@ -8,6 +8,8 @@ class MoreCoordinator: NavigationCoordinator {
   private(set) var coordinator: Coordinator?
   private(set) var router: Router
   
+  var didCompleteFlow: (() -> Void)?
+  
   init(router: Router) {
     self.hasStarted = false
     self.coordinator = nil
@@ -46,6 +48,7 @@ class MoreCoordinator: NavigationCoordinator {
     moreController.didTapAbout = { [unowned self] in
       self.showAbout()
     }
+    moreController.didTapLogout = didCompleteFlow
     router.setRootModule(moreController)
   }
   
