@@ -17,14 +17,13 @@ class MainCoordinator: TabBarCoordinator {
   func start(with link: DeepLink?) {
     if coordinators.isEmpty {
       setup()
+      selectIndex(0, with: nil)
     } else {
       // free presented coordinator (if needed)
     }
     
     if let deepLink = link {
       handleDeepLink(deepLink)
-    } else {
-      selectIndex(0, with: nil)
     }
   }
   
