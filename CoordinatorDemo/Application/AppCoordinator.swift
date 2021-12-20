@@ -30,10 +30,12 @@ class AppCoordinator: NavigationCoordinator {
     let mainController: TabBarController = .instantiate(from: .main)
     let mainCoordinator = MainCoordinator(tabBarController: mainController)
     mainCoordinator.didCompleteFlow = { [unowned self] in
+      self.hasStarted = false
       self.coordinator = nil
       self.isAuthorized = false
-      self.start()
+      self.start(with: nil)
     }
+    self.hasStarted = true
     self.coordinator = mainCoordinator
     router.setRootModule(mainController, hideBar: true)
     self.coordinator?.start(with: link)
@@ -42,11 +44,13 @@ class AppCoordinator: NavigationCoordinator {
   private func startAuthFlow(with link: DeepLink?) {
     let authCoordinator = AuthCoordinator(router: router)
     authCoordinator.didCompleteFlow = { [unowned self] in
+      self.hasStarted = false
       self.coordinator = nil
       self.isAuthorized = true
       self.start(with: link)
     }
+    self.hasStarted = true
     self.coordinator = authCoordinator
-    self.coordinator?.start(with: nil)
+    self.coordinator?.start(with: link)
   }
 }
