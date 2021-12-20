@@ -44,10 +44,14 @@ class ProfileCoordinator: NavigationCoordinator {
   
   private func showProfile() {
     let profileController: ProfileViewController = .instantiate(from: .profile)
+    profileController.didTapProfileDetail = { [unowned self] in
+      self.showProfileDetail()
+    }
     router.push(profileController, animated: true, completion: didCompleteFlow)
   }
   
   private func showProfileDetail() {
-    
+    let profileDetailController: ProfileDetailViewController = .instantiate(from: .profile)
+    router.push(profileDetailController)
   }
 }
