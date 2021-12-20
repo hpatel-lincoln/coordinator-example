@@ -11,7 +11,6 @@ enum DeepLinkComponent {
   // Home
   case home
   case profile
-  case profileDetail
   
   // More
   case more

@@ -19,26 +19,8 @@ class ProfileCoordinator: NavigationCoordinator {
     if hasStarted {
       router.dismissModule(animated: false, completion: nil)
       router.popToRootModule(animated: false)
-      coordinator = nil
     } else {
       showProfile()
-    }
-    
-    if let deepLink = link {
-      handleDeepLink(deepLink)
-    }
-  }
-  
-  private func handleDeepLink(_ link: DeepLink) {
-    var deepLink = link
-    if deepLink.count > 0 {
-      let next = deepLink.removeFirst()
-      switch next {
-      case .profileDetail:
-        showProfileDetail()
-      default:
-        break
-      }
     }
   }
   
