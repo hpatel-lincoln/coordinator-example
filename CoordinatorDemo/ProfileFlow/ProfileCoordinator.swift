@@ -1,11 +1,13 @@
-// Created by Hardik Patel on 9/4/21.
+// Created by Hardik Patel on 12/20/21.
 
-import UIKit
+import Foundation
 
-class HomeCoordinator: NavigationCoordinator {
+class ProfileCoordinator: NavigationCoordinator {
   private(set) var hasStarted: Bool
   private(set) var coordinator: Coordinator?
   private(set) var router: Router
+  
+  var didCompleteFlow: (() -> Void)?
   
   init(router: Router) {
     self.hasStarted = false
@@ -19,7 +21,7 @@ class HomeCoordinator: NavigationCoordinator {
       router.popToRootModule(animated: false)
       coordinator = nil
     } else {
-      showHome()
+      showProfile()
     }
     
     if let deepLink = link {
@@ -32,28 +34,20 @@ class HomeCoordinator: NavigationCoordinator {
     if deepLink.count > 0 {
       let next = deepLink.removeFirst()
       switch next {
-      case .profile:
-        startProfileFlow(with: deepLink)
+      case .profileDetail:
+        showProfileDetail()
       default:
         break
       }
     }
   }
   
-  private func showHome() {
-    let homeController: HomeViewController = .instantiate(from: .home)
-    homeController.didTapProfileFlow = { [unowned self] in
-      self.startProfileFlow(with: nil)
-    }
-    router.setRootModule(homeController)
+  private func showProfile() {
+    let profileController: ProfileViewController = .instantiate(from: .profile)
+    router.push(profileController, animated: true, completion: didCompleteFlow)
   }
   
-  private func startProfileFlow(with link: DeepLink?) {
-    let profileCoordinator = ProfileCoordinator(router: router)
-    profileCoordinator.didCompleteFlow = { [unowned self] in
-      self.coordinator = nil
-    }
-    self.coordinator = profileCoordinator
-    self.coordinator?.start(with: link)
+  private func showProfileDetail() {
+    
   }
 }

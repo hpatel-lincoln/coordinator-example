@@ -10,9 +10,8 @@ enum DeepLinkComponent {
   
   // Home
   case home
-  case push
-  case pushFlow
-  case pushFlowDetail
+  case profile
+  case profileDetail
   
   // More
   case more
