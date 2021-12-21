@@ -19,6 +19,7 @@ class ProfileCoordinator: NavigationCoordinator {
     if hasStarted {
       router.dismissModule(animated: false, completion: nil)
       router.popToRootModule(animated: false)
+      coordinator = nil
     } else {
       showProfile()
     }

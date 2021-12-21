@@ -34,6 +34,8 @@ class HomeCoordinator: NavigationCoordinator {
       switch next {
       case .profile:
         startProfileFlow(with: deepLink)
+      case .agreements:
+        startAgreementsFlow(with: deepLink)
       default:
         break
       }
@@ -54,6 +56,17 @@ class HomeCoordinator: NavigationCoordinator {
       self.coordinator = nil
     }
     self.coordinator = profileCoordinator
+    self.coordinator?.start(with: link)
+  }
+  
+  private func startAgreementsFlow(with link: DeepLink?) {
+    let navigationController = UINavigationController()
+    navigationController.modalPresentationStyle = .fullScreen
+    let agreementsRouter = RouterImp(rootController: navigationController)
+    
+    let agreementsCoordinator = AgreementsCoordinator(router: agreementsRouter)
+    self.coordinator = agreementsCoordinator
+    router.present(navigationController)
     self.coordinator?.start(with: link)
   }
 }
