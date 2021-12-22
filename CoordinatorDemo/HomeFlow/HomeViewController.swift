@@ -5,6 +5,7 @@ import UIKit
 class HomeViewController: UIViewController {
   
   var didTapProfileFlow: (() -> Void)?
+  var didTapShowAgreements: (() -> Void)?
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -14,5 +15,9 @@ class HomeViewController: UIViewController {
   
   @IBAction func onProfileFlowTap() {
     didTapProfileFlow?()
+  }
+  
+  @IBAction func onShowAgreementsTap() {
+    didTapShowAgreements?()
   }
 }

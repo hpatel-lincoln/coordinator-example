@@ -7,5 +7,6 @@ enum Storyboard: String {
   case auth = "Auth"
   case home = "Home"
   case profile = "Profile"
+  case agreements = "Agreements"
   case more = "More"
 }

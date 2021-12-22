@@ -47,6 +47,9 @@ class HomeCoordinator: NavigationCoordinator {
     homeController.didTapProfileFlow = { [unowned self] in
       self.startProfileFlow(with: nil)
     }
+    homeController.didTapShowAgreements = { [unowned self] in
+      self.startAgreementsFlow(with: nil)
+    }
     router.setRootModule(homeController)
   }
   
@@ -62,11 +65,15 @@ class HomeCoordinator: NavigationCoordinator {
   private func startAgreementsFlow(with link: DeepLink?) {
     let navigationController = UINavigationController()
     navigationController.modalPresentationStyle = .fullScreen
-    let agreementsRouter = RouterImp(rootController: navigationController)
-    
-    let agreementsCoordinator = AgreementsCoordinator(router: agreementsRouter)
-    self.coordinator = agreementsCoordinator
     router.present(navigationController)
+    
+    let agreementsRouter = RouterImp(rootController: navigationController)
+    let agreementsCoordinator = AgreementsCoordinator(router: agreementsRouter)
+    agreementsCoordinator.didCompleteFlow = { [unowned self] in
+      self.coordinator = nil
+      self.router.dismissModule()
+    }
+    self.coordinator = agreementsCoordinator
     self.coordinator?.start(with: link)
   }
 }

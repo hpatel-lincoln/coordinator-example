@@ -22,13 +22,13 @@ class AgreementsCoordinator: NavigationCoordinator {
       router.popToRootModule(animated: false)
       coordinator = nil
     } else {
-      showController()
+      showAgreementsController()
     }
   }
   
-  private func showController() {
-    let controller = UIViewController()
-    controller.view.backgroundColor = UIColor.green
-    router.setRootModule(controller)
+  private func showAgreementsController() {
+    let agreementsController: AgreementsViewController = .instantiate(from: .agreements)
+    agreementsController.didTapDone = didCompleteFlow
+    router.setRootModule(agreementsController)
   }
 }
