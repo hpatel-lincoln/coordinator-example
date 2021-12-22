@@ -31,15 +31,11 @@ class MoreCoordinator: NavigationCoordinator {
   }
   
   private func handleDeepLink(_ link: DeepLink) {
-    var deepLink = link
-    if deepLink.count > 0 {
-      let next = deepLink.removeFirst()
-      switch next {
-      case .about:
-        showAbout()
-      default:
-        break
-      }
+    switch link {
+    case .about:
+      showAbout()
+    default:
+      break
     }
   }
   

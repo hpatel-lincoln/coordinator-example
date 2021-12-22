@@ -29,17 +29,13 @@ class HomeCoordinator: NavigationCoordinator {
   }
   
   private func handleDeepLink(_ link: DeepLink) {
-    var deepLink = link
-    if deepLink.count > 0 {
-      let next = deepLink.removeFirst()
-      switch next {
-      case .profile:
-        startProfileFlow(with: deepLink)
-      case .agreements:
-        startAgreementsFlow(with: deepLink)
-      default:
-        break
-      }
+    switch link {
+    case .profile:
+      startProfileFlow(with: link)
+    case .agreements:
+      startAgreementsFlow(with: link)
+    default:
+      break
     }
   }
   

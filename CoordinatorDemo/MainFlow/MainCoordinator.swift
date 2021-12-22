@@ -65,17 +65,13 @@ class MainCoordinator: TabBarCoordinator {
   }
   
   private func handleDeepLink(_ link: DeepLink) {
-    var deepLink = link
-    if deepLink.count > 0 {
-      let next = deepLink.removeFirst()
-      switch next {
-      case .home:
-        selectIndex(0, with: deepLink)
-      case .more:
-        selectIndex(1, with: deepLink)
-      default:
-        break
-      }
+    switch link {
+    case .home:
+      selectIndex(0, with: link)
+    case .more:
+      selectIndex(1, with: link)
+    default:
+      break
     }
   }
   

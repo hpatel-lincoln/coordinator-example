@@ -30,15 +30,11 @@ class AuthCoordinator: NavigationCoordinator {
   }
   
   private func handleDeepLink(_ link: DeepLink) {
-    var deepLink = link
-    if deepLink.count > 0 {
-      let next = deepLink.removeFirst()
-      switch next {
-      case .signup:
-        showSignup()
-      default:
-        break
-      }
+    switch link {
+    case .signup:
+      showSignup()
+    default:
+      break
     }
   }
   

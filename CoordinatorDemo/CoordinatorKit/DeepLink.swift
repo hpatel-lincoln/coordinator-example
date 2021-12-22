@@ -2,9 +2,7 @@
 
 import Foundation
 
-typealias DeepLink = [DeepLinkComponent]
-
-enum DeepLinkComponent {
+enum DeepLink {
   // Auth
   case signup
   
