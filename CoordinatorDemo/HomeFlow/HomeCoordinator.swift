@@ -44,7 +44,7 @@ class HomeCoordinator: NavigationCoordinator {
   
   private func showHome() {
     let homeController: HomeViewController = .instantiate(from: .home)
-    homeController.didTapProfileFlow = { [unowned self] in
+    homeController.didTapViewProfile = { [unowned self] in
       self.startProfileFlow(with: nil)
     }
     homeController.didTapShowAgreements = { [unowned self] in

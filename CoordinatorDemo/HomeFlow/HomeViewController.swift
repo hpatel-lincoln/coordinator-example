@@ -4,7 +4,7 @@ import UIKit
 
 class HomeViewController: UIViewController {
   
-  var didTapProfileFlow: (() -> Void)?
+  var didTapViewProfile: (() -> Void)?
   var didTapShowAgreements: (() -> Void)?
   
   override func viewDidLoad() {
@@ -13,8 +13,8 @@ class HomeViewController: UIViewController {
     navigationController?.navigationBar.prefersLargeTitles = true
   }
   
-  @IBAction func onProfileFlowTap() {
-    didTapProfileFlow?()
+  @IBAction func onViewProfileTap() {
+    didTapViewProfile?()
   }
   
   @IBAction func onShowAgreementsTap() {

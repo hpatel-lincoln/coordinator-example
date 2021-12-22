@@ -19,20 +19,20 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="fwK-CT-Oxv">
-                                <rect key="frame" x="117" y="299" width="141" height="69"/>
+                                <rect key="frame" x="125" y="299.5" width="125" height="68"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ttC-QD-DtS">
-                                        <rect key="frame" x="0.0" y="0.0" width="141" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="125" height="30"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" title="Profile Flow"/>
+                                        <state key="normal" title="View Profile"/>
                                         <connections>
-                                            <action selector="onProfileFlowTap" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Ncf-35-rdl"/>
+                                            <action selector="onViewProfileTap" destination="Y6W-OH-hqX" eventType="touchUpInside" id="LKX-Hw-4jk"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8sD-c1-VaD">
-                                        <rect key="frame" x="0.0" y="38" width="141" height="31"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Show Agreements"/>
+                                        <rect key="frame" x="0.0" y="38" width="125" height="30"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Show Agreements"/>
                                         <connections>
                                             <action selector="onShowAgreementsTap" destination="Y6W-OH-hqX" eventType="touchUpInside" id="jhz-Ae-c8p"/>
                                         </connections>
