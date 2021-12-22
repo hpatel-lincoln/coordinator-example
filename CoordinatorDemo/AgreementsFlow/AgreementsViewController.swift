@@ -4,21 +4,15 @@ import UIKit
 
 class AgreementsViewController: UIViewController {
   
-  var didTapDone: (() -> Void)?
+  var didTapNext: (() -> Void)?
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
     navigationItem.title = "Agreements"
     navigationController?.navigationBar.prefersLargeTitles = true
-    
-    navigationItem.rightBarButtonItem = UIBarButtonItem(
-      barButtonSystemItem: .done,
-      target: self,
-      action: #selector(onDoneTap))
   }
   
-  @objc private func onDoneTap() {
-    didTapDone?()
+  @IBAction func onNextTap() {
+    didTapNext?()
   }
 }

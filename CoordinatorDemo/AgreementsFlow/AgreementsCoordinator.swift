@@ -8,7 +8,7 @@ class AgreementsCoordinator: NavigationCoordinator {
   private(set) var coordinator: Coordinator?
   private(set) var router: Router
   
-  var didCompleteFlow: (() -> Void)?
+  var didCompleteFlow: ((Bool) -> Void)?
   
   init(router: Router) {
     self.hasStarted = false
@@ -28,7 +28,16 @@ class AgreementsCoordinator: NavigationCoordinator {
   
   private func showAgreementsController() {
     let agreementsController: AgreementsViewController = .instantiate(from: .agreements)
-    agreementsController.didTapDone = didCompleteFlow
+    agreementsController.didTapNext = { [unowned self] in
+      self.showAcceptAgreementsController()
+    }
     router.setRootModule(agreementsController)
+  }
+  
+  private func showAcceptAgreementsController() {
+    let acceptAgreementsController: AcceptAgreementsViewController = .instantiate(from: .agreements)
+    acceptAgreementsController.didTapAccept = didCompleteFlow
+    acceptAgreementsController.didTapDecline = didCompleteFlow
+    router.push(acceptAgreementsController)
   }
 }

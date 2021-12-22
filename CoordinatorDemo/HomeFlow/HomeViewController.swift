@@ -20,4 +20,16 @@ class HomeViewController: UIViewController {
   @IBAction func onShowAgreementsTap() {
     didTapShowAgreements?()
   }
+  
+  func onAcceptAgreements(_ accepted: Bool) {
+    let alertTitle = "Agreements"
+    let alertMessage = accepted ? "You have accepted the agreements." : "You have declined the agreements."
+    let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .alert)
+    
+    let okActionTitle = "Ok"
+    let okAction = UIAlertAction(title: okActionTitle, style: .default, handler: nil)
+    alert.addAction(okAction)
+    
+    self.present(alert, animated: true, completion: nil)
+  }
 }
