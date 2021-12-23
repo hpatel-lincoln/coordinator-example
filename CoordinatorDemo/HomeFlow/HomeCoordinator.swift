@@ -15,28 +15,29 @@ class HomeCoordinator: NavigationCoordinator {
   }
   
   func start(with link: DeepLink?) {
-    if hasStarted {
-      router.dismissModule(animated: false, completion: nil)
-      router.popToRootModule(animated: false)
-      coordinator = nil
-    } else {
+    if hasStarted == false {
       showHome()
     }
-    
-    if let deepLink = link {
-      handleDeepLink(deepLink)
-    }
+    handleDeepLink(link)
   }
   
-  private func handleDeepLink(_ link: DeepLink) {
+  private func handleDeepLink(_ link: DeepLink?) {
     switch link {
     case .profile:
+      reset()
       startProfileFlow(with: link)
     case .agreements:
+      reset()
       startAgreementsFlow(with: link)
     default:
       break
     }
+  }
+  
+  private func reset() {
+    router.dismissModule(animated: false, completion: nil)
+    router.popToRootModule(animated: false)
+    coordinator = nil
   }
   
   private func showHome() {
@@ -63,7 +64,7 @@ class HomeCoordinator: NavigationCoordinator {
   private func startAgreementsFlow(with link: DeepLink?) {
     let navigationController = UINavigationController()
     navigationController.modalPresentationStyle = .fullScreen
-    router.present(navigationController)
+    self.router.present(navigationController)
     
     let agreementsRouter = RouterImp(rootController: navigationController)
     let agreementsCoordinator = AgreementsCoordinator(router: agreementsRouter)

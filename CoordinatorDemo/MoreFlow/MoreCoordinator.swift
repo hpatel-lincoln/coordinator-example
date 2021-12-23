@@ -17,26 +17,26 @@ class MoreCoordinator: NavigationCoordinator {
   }
   
   func start(with link: DeepLink?) {
-    if hasStarted {
-      router.dismissModule(animated: false, completion: nil)
-      router.popToRootModule(animated: false)
-      coordinator = nil
-    } else {
+    if hasStarted == false {
       showMore()
     }
-    
-    if let deepLink = link {
-      handleDeepLink(deepLink)
-    }
+    handleDeepLink(link)
   }
   
-  private func handleDeepLink(_ link: DeepLink) {
+  private func handleDeepLink(_ link: DeepLink?) {
     switch link {
     case .about:
+      reset()
       showAbout()
     default:
       break
     }
+  }
+  
+  private func reset() {
+    router.dismissModule(animated: false, completion: nil)
+    router.popToRootModule(animated: false)
+    coordinator = nil
   }
   
   private func showMore() {

@@ -17,11 +17,7 @@ class AgreementsCoordinator: NavigationCoordinator {
   }
   
   func start(with link: DeepLink?) {
-    if hasStarted {
-      router.dismissModule(animated: false, completion: nil)
-      router.popToRootModule(animated: false)
-      coordinator = nil
-    } else {
+    if hasStarted == false {
       showAgreementsController()
     }
   }
