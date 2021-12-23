@@ -17,6 +17,7 @@ class HomeCoordinator: NavigationCoordinator {
   func start(with link: DeepLink?) {
     if hasStarted == false {
       showHome()
+      hasStarted = true
     }
     handleDeepLink(link)
   }

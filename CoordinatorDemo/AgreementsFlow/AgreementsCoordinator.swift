@@ -19,6 +19,7 @@ class AgreementsCoordinator: NavigationCoordinator {
   func start(with link: DeepLink?) {
     if hasStarted == false {
       showAgreementsController()
+      hasStarted = true
     }
   }
   

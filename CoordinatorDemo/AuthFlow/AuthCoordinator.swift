@@ -18,6 +18,7 @@ class AuthCoordinator: NavigationCoordinator {
   func start(with link: DeepLink?) {
     if hasStarted == false {
       showLogin()
+      hasStarted = true
     }
     handleDeepLink(link)
   }

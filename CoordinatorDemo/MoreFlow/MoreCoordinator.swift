@@ -19,6 +19,7 @@ class MoreCoordinator: NavigationCoordinator {
   func start(with link: DeepLink?) {
     if hasStarted == false {
       showMore()
+      hasStarted = true
     }
     handleDeepLink(link)
   }

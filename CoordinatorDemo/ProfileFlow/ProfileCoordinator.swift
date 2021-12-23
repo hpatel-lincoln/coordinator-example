@@ -18,6 +18,7 @@ class ProfileCoordinator: NavigationCoordinator {
   func start(with link: DeepLink?) {
     if hasStarted == false {
       showProfile()
+      hasStarted = true
     }
   }
   

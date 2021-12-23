@@ -20,8 +20,10 @@ class AppCoordinator: NavigationCoordinator {
     } else {
       if isAuthorized {
         startMainFlow(with: link)
+        self.hasStarted = true
       } else {
         startAuthFlow(with: link)
+        self.hasStarted = true
       }
     }
   }
@@ -35,7 +37,6 @@ class AppCoordinator: NavigationCoordinator {
       self.isAuthorized = false
       self.start(with: nil)
     }
-    self.hasStarted = true
     self.coordinator = mainCoordinator
     router.setRootModule(mainController, hideBar: true)
     self.coordinator?.start(with: link)
@@ -49,7 +50,6 @@ class AppCoordinator: NavigationCoordinator {
       self.isAuthorized = true
       self.start(with: link)
     }
-    self.hasStarted = true
     self.coordinator = authCoordinator
     self.coordinator?.start(with: link)
   }
