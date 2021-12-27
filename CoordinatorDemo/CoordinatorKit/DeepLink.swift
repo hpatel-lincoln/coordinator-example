@@ -2,7 +2,7 @@
 
 import Foundation
 
-enum DeepLink {
+enum DeepLink: String {
   // Auth
   case signup
   

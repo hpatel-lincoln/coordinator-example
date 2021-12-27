@@ -19,7 +19,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
     // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
     // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-    appCoordinator.start(with: .agreements)
+    if let shortcutItem = connectionOptions.shortcutItem,
+       let deepLink = DeepLink.init(rawValue: shortcutItem.type) {
+      appCoordinator.start(with: deepLink)
+    } else {
+      appCoordinator.start(with: .home)
+    }
   }
   
   func sceneDidDisconnect(_ scene: UIScene) {
@@ -37,6 +42,24 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
   func sceneWillResignActive(_ scene: UIScene) {
     // Called when the scene will move from an active state to an inactive state.
     // This may occur due to temporary interruptions (ex. an incoming phone call).
+    let application = UIApplication.shared
+    application.shortcutItems = [
+      UIApplicationShortcutItem(type: DeepLink.profile.rawValue,
+                                localizedTitle: "Profile",
+                                localizedSubtitle: "View your profile",
+                                icon: UIApplicationShortcutIcon(systemImageName: "star.fill"),
+                                userInfo: nil),
+      UIApplicationShortcutItem(type: DeepLink.agreements.rawValue,
+                                localizedTitle: "Agreements",
+                                localizedSubtitle: "Accept agreements",
+                                icon: UIApplicationShortcutIcon(systemImageName: "star.fill"),
+                                userInfo: nil),
+      UIApplicationShortcutItem(type: DeepLink.about.rawValue,
+                                localizedTitle: "About",
+                                localizedSubtitle: "About this app",
+                                icon: UIApplicationShortcutIcon(systemImageName: "star.fill"),
+                                userInfo: nil)
+    ]
   }
   
   func sceneWillEnterForeground(_ scene: UIScene) {
@@ -48,5 +71,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     // Called as the scene transitions from the foreground to the background.
     // Use this method to save data, release shared resources, and store enough scene-specific state information
     // to restore the scene back to its current state.
+  }
+  
+  func windowScene(_ windowScene: UIWindowScene, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
+    if let deepLink = DeepLink.init(rawValue: shortcutItem.type) {
+      appCoordinator.start(with: deepLink)
+    }
   }
 }
