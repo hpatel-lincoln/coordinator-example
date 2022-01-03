@@ -62,10 +62,10 @@ class MainCoordinator: TabBarCoordinator {
   private func handleDeepLink(_ link: DeepLink?) {
     switch link {
     case .home, .profile, .agreements:
-      // free presented coordinator (if needed)
+      releasePresentedCoordinator()
       selectIndex(0, with: link)
     case .more, .about:
-      // free presented coordinator (if needed)
+      releasePresentedCoordinator()
       selectIndex(1, with: link)
     default:
       break
@@ -82,5 +82,13 @@ class MainCoordinator: TabBarCoordinator {
     tabBarController.selectedIndex = index
     let coordinator = coordinators[index]
     coordinator?.start(with: link)
+  }
+  
+  private func releasePresentedCoordinator() {
+    let selectedIndex = tabBarController.selectedIndex
+    if selectedIndex >= 0,
+       let presentingCoordinator = coordinators[selectedIndex] as? PresentingCoordinator {
+      presentingCoordinator.dismiss()
+    }
   }
 }

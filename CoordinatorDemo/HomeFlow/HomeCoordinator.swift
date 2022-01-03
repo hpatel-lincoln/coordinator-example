@@ -78,3 +78,12 @@ class HomeCoordinator: NavigationCoordinator {
     self.coordinator?.start(with: link)
   }
 }
+
+extension HomeCoordinator: PresentingCoordinator {
+  
+  func dismiss() {
+    if coordinator is AgreementsCoordinator {
+      coordinator = nil
+    }
+  }
+}

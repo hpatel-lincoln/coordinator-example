@@ -22,3 +22,7 @@ protocol NavigationCoordinator: Coordinator {
 protocol TabBarCoordinator: Coordinator {
   var coordinators: [Int: Coordinator] { get }
 }
+
+protocol PresentingCoordinator {
+  func dismiss()
+}
