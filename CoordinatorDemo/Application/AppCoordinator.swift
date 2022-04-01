@@ -38,7 +38,7 @@ class AppCoordinator: NavigationCoordinator {
       self.start(with: nil)
     }
     self.coordinator = mainCoordinator
-    router.setRootModule(mainController, hideBar: true)
+    router.setRootController(mainController, hideBar: true)
     self.coordinator?.start(with: link)
   }
   

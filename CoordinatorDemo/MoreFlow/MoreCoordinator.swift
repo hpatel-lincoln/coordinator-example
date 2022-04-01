@@ -35,8 +35,8 @@ class MoreCoordinator: NavigationCoordinator {
   }
   
   private func reset() {
-    router.dismissModule(animated: false, completion: nil)
-    router.popToRootModule(animated: false)
+    router.dismissController(animated: false, completion: nil)
+    router.popToRootController(animated: false)
     coordinator = nil
   }
   
@@ -46,7 +46,7 @@ class MoreCoordinator: NavigationCoordinator {
       self.showAbout()
     }
     moreController.didTapLogout = didCompleteFlow
-    router.setRootModule(moreController)
+    router.setRootController(moreController)
   }
   
   private func showAbout() {

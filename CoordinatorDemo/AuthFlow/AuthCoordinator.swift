@@ -34,8 +34,8 @@ class AuthCoordinator: NavigationCoordinator {
   }
   
   private func reset() {
-    router.dismissModule(animated: false, completion: nil)
-    router.popToRootModule(animated: false)
+    router.dismissController(animated: false, completion: nil)
+    router.popToRootController(animated: false)
     coordinator = nil
   }
   
@@ -45,7 +45,7 @@ class AuthCoordinator: NavigationCoordinator {
     loginController.didTapSignup = { [unowned self] in
       self.showSignup()
     }
-    router.setRootModule(loginController)
+    router.setRootController(loginController)
   }
   
   private func showSignup() {

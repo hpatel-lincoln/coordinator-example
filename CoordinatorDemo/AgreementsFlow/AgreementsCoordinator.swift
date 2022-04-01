@@ -28,7 +28,7 @@ class AgreementsCoordinator: NavigationCoordinator {
     agreementsController.didTapNext = { [unowned self] in
       self.showAcceptAgreementsController()
     }
-    router.setRootModule(agreementsController)
+    router.setRootController(agreementsController)
   }
   
   private func showAcceptAgreementsController() {

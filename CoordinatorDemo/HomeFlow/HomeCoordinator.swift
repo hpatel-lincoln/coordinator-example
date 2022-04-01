@@ -36,8 +36,8 @@ class HomeCoordinator: NavigationCoordinator {
   }
   
   private func reset() {
-    router.dismissModule(animated: false, completion: nil)
-    router.popToRootModule(animated: false)
+    router.dismissController(animated: false, completion: nil)
+    router.popToRootController(animated: false)
     coordinator = nil
   }
   
@@ -50,7 +50,7 @@ class HomeCoordinator: NavigationCoordinator {
       self.startAgreementsFlow(with: nil)
     }
     self.homeController = homeController
-    self.router.setRootModule(homeController)
+    self.router.setRootController(homeController)
   }
   
   private func startProfileFlow(with link: DeepLink?) {
@@ -68,7 +68,7 @@ class HomeCoordinator: NavigationCoordinator {
     let agreementsCoordinator = AgreementsCoordinator(router: agreementsRouter)
     agreementsCoordinator.didCompleteFlow = { [unowned self] accepted in
       self.coordinator = nil
-      self.router.dismissModule()
+      self.router.dismissController()
       self.homeController?.onAcceptAgreements(accepted)
     }
     self.coordinator = agreementsCoordinator
