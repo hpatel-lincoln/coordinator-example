@@ -64,9 +64,6 @@ class HomeCoordinator: NavigationCoordinator {
   
   private func startAgreementsFlow(with link: DeepLink?) {
     let navigationController = UINavigationController()
-    navigationController.modalPresentationStyle = .fullScreen
-    self.router.present(navigationController)
-    
     let agreementsRouter = RouterImp(rootController: navigationController)
     let agreementsCoordinator = AgreementsCoordinator(router: agreementsRouter)
     agreementsCoordinator.didCompleteFlow = { [unowned self] accepted in
@@ -75,6 +72,9 @@ class HomeCoordinator: NavigationCoordinator {
       self.homeController?.onAcceptAgreements(accepted)
     }
     self.coordinator = agreementsCoordinator
+    self.router.present(navigationController, animated: true) { [unowned self] in
+      coordinator = nil
+    }
     self.coordinator?.start(with: link)
   }
 }

@@ -8,7 +8,7 @@ protocol Router {
   func setRootModule(_ module: Presentable, hideBar: Bool)
   
   func present(_ module: Presentable)
-  func present(_ module: Presentable, animated: Bool)
+  func present(_ module: Presentable, animated: Bool, completion: (() -> Void)?)
   
   func dismissModule()
   func dismissModule(animated: Bool, completion: (() -> Void)?)
@@ -48,11 +48,17 @@ final class RouterImp: NSObject, Router {
   }
   
   func present(_ module: Presentable) {
-    present(module, animated: true)
+    present(module, animated: true, completion: nil)
   }
   
-  func present(_ module: Presentable, animated: Bool) {
+  func present(_ module: Presentable, animated: Bool, completion: (() -> Void)?) {
     let controller = module.toPresent()
+    if controller is UINavigationController {
+      controller.presentationController?.delegate = self
+    }
+    if let completion = completion {
+      completions[controller] = completion
+    }
     rootController.present(controller, animated: animated, completion: nil)
   }
   
@@ -129,5 +135,13 @@ extension RouterImp: UINavigationControllerDelegate {
       rootController.viewControllers.contains(prevController) == false
     else { return }
     runCompletion(for: prevController)
+  }
+}
+
+extension RouterImp: UIAdaptivePresentationControllerDelegate {
+  
+  func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
+    let presentedController = presentationController.presentedViewController
+    runCompletion(for: presentedController)
   }
 }
