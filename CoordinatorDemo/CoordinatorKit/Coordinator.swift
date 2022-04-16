@@ -26,3 +26,5 @@ protocol TabBarCoordinator: Coordinator {
 protocol PresentingCoordinator {
   func dismiss()
 }
+
+protocol PresentedCoordinator { }

@@ -78,9 +78,8 @@ class HomeCoordinator: NavigationCoordinator {
 }
 
 extension HomeCoordinator: PresentingCoordinator {
-  
   func dismiss() {
-    if coordinator is AgreementsCoordinator {
+    if coordinator is PresentedCoordinator {
       coordinator = nil
     }
   }

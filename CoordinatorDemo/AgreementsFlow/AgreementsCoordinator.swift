@@ -3,7 +3,7 @@
 import Foundation
 import UIKit
 
-class AgreementsCoordinator: NavigationCoordinator {
+class AgreementsCoordinator: NavigationCoordinator, PresentedCoordinator {
   private(set) var hasStarted: Bool = false
   private(set) var coordinator: Coordinator?
   private(set) var router: Router
