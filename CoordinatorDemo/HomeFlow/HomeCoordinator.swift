@@ -3,14 +3,12 @@
 import UIKit
 
 class HomeCoordinator: NavigationCoordinator {
-  private(set) var hasStarted: Bool
+  private(set) var hasStarted: Bool = false
   private(set) var coordinator: Coordinator?
   private(set) var router: Router
   private var homeController: HomeViewController?
   
   init(router: Router) {
-    self.hasStarted = false
-    self.coordinator = nil
     self.router = router
   }
   

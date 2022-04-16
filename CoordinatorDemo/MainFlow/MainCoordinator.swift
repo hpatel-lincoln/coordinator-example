@@ -3,14 +3,12 @@
 import UIKit
 
 class MainCoordinator: TabBarCoordinator {
-  
-  private(set) var coordinators: [Int : Coordinator]
+  private(set) var coordinators: [Int : Coordinator] = [:]
   private(set) var tabBarController: TabBarController
   
   var didCompleteFlow: (() -> Void)?
   
   init(tabBarController: TabBarController) {
-    self.coordinators = [:]
     self.tabBarController = tabBarController
   }
   

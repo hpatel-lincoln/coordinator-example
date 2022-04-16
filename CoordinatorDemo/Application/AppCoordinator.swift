@@ -3,14 +3,12 @@
 import Foundation
 
 class AppCoordinator: NavigationCoordinator {
-  private(set) var hasStarted: Bool
+  private(set) var hasStarted: Bool = false
   private(set) var coordinator: Coordinator?
   private(set) var router: Router
   private var isAuthorized: Bool = false
   
   init(router: Router) {
-    self.hasStarted = false
-    self.coordinator = nil
     self.router = router
   }
   

@@ -4,15 +4,13 @@ import Foundation
 import UIKit
 
 class AgreementsCoordinator: NavigationCoordinator {
-  private(set) var hasStarted: Bool
+  private(set) var hasStarted: Bool = false
   private(set) var coordinator: Coordinator?
   private(set) var router: Router
   
   var didCompleteFlow: ((Bool) -> Void)?
   
   init(router: Router) {
-    self.hasStarted = false
-    self.coordinator = nil
     self.router = router
   }
   

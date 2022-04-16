@@ -3,16 +3,13 @@
 import Foundation
 
 class MoreCoordinator: NavigationCoordinator {
-  
-  private(set) var hasStarted: Bool
+  private(set) var hasStarted: Bool = false
   private(set) var coordinator: Coordinator?
   private(set) var router: Router
   
   var didCompleteFlow: (() -> Void)?
   
   init(router: Router) {
-    self.hasStarted = false
-    self.coordinator = nil
     self.router = router
   }
   
