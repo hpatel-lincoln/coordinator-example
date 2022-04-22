@@ -3,14 +3,7 @@
 import Foundation
 
 protocol Coordinator: AnyObject {
-  func start()
   func start(with link: DeepLink?)
-}
-
-extension Coordinator {
-  func start() {
-    start(with: nil)
-  }
 }
 
 protocol NavigationCoordinator: Coordinator {
