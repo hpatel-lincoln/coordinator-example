@@ -1,14 +1,14 @@
 //
-//  CoordinatorDemoTests.swift
-//  CoordinatorDemoTests
+//  CoordinatorExampleTests.swift
+//  CoordinatorExampleTests
 //
 //  Created by Hardik Patel on 9/4/21.
 //
 
 import XCTest
-@testable import CoordinatorDemo
+@testable import CoordinatorExample
 
-class CoordinatorDemoTests: XCTestCase {
+class CoordinatorExampleTests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
